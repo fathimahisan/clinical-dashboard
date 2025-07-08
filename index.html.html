@@ -1,0 +1,744 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Clinician Dashboard - Patient Health Overview
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-30">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <div class="flex items-center space-x-3">
+     <img alt="Logo with letters MD representing Medical Dashboard" class="h-10 w-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/1386a856-64e5-49cb-6b63-1a41290199a7.jpg" width="40"/>
+     <h1 class="text-xl font-semibold text-gray-900">
+      Clinician Dashboard
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-6 text-gray-700 font-medium">
+     <a class="hover:text-blue-600 transition" href="#">
+      Dashboard
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      Patients
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      Appointments
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      Reports
+     </a>
+     <a class="hover:text-blue-600 transition" href="#">
+      Settings
+     </a>
+    </nav>
+    <div class="flex items-center space-x-4">
+     <button aria-label="Notifications" class="relative text-gray-600 hover:text-blue-600 transition focus:outline-none">
+      <i class="fas fa-bell fa-lg">
+      </i>
+      <span class="absolute -top-1 -right-1 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+       3
+      </span>
+     </button>
+     <button aria-expanded="false" aria-haspopup="true" aria-label="User menu" class="focus:outline-none" id="user-menu-button">
+      <img alt="User profile picture of clinician Dr. Jane Doe" class="h-10 w-10 rounded-full" height="40" src="https://storage.googleapis.com/a1aa/image/89fd6ab2-1e2a-46ed-ece5-cd7d855a5c50.jpg" width="40"/>
+     </button>
+    </div>
+    <!-- Mobile menu button -->
+    <div class="md:hidden">
+     <button aria-label="Open main menu" class="text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600" id="mobile-menu-button">
+      <i class="fas fa-bars fa-lg">
+      </i>
+     </button>
+    </div>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Mobile main menu" class="hidden md:hidden bg-white border-t border-gray-200" id="mobile-menu">
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium" href="#">
+     Dashboard
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium" href="#">
+     Patients
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium" href="#">
+     Appointments
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium" href="#">
+     Reports
+    </a>
+    <a class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium" href="#">
+     Settings
+    </a>
+   </nav>
+  </header>
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+   <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
+    <!-- Patient Summary Panel -->
+    <section aria-labelledby="patient-summary-title" class="bg-white rounded-lg shadow p-6 flex-1 md:max-w-sm">
+     <h2 class="text-lg font-semibold text-gray-900 mb-4" id="patient-summary-title">
+      Patient Summary
+     </h2>
+     <div class="flex items-center space-x-4 mb-6">
+      <img alt="Patient portrait photo of a middle-aged woman with short brown hair and glasses" class="w-20 h-20 rounded-full object-cover" height="80" src="https://storage.googleapis.com/a1aa/image/f26c0d95-1982-48f9-78e5-29a4e792b4d6.jpg" width="80"/>
+      <div>
+       <h3 class="text-xl font-semibold text-gray-900">
+        Mary Johnson
+       </h3>
+       <p class="text-gray-600">
+        DOB: 1980-05-12 (43 years)
+       </p>
+       <p class="text-gray-600">
+        Patient ID: 123456
+       </p>
+      </div>
+     </div>
+     <div class="space-y-3">
+      <div class="flex justify-between text-gray-700">
+       <span>
+        Last Visit:
+       </span>
+       <span class="font-medium">
+        2024-05-20
+       </span>
+      </div>
+      <div class="flex justify-between text-gray-700">
+       <span>
+        Primary Physician:
+       </span>
+       <span class="font-medium">
+        Dr. Jane Doe
+       </span>
+      </div>
+      <div class="flex justify-between text-gray-700">
+       <span>
+        Allergies:
+       </span>
+       <span class="font-medium text-red-600">
+        Penicillin
+       </span>
+      </div>
+      <div class="flex justify-between text-gray-700">
+       <span>
+        Blood Type:
+       </span>
+       <span class="font-medium">
+        O+
+       </span>
+      </div>
+     </div>
+    </section>
+    <!-- Health Metrics Panel -->
+    <section aria-labelledby="health-metrics-title" class="bg-white rounded-lg shadow p-6 flex-1">
+     <h2 class="text-lg font-semibold text-gray-900 mb-4" id="health-metrics-title">
+      Health Metrics
+     </h2>
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Metric Card -->
+      <div class="bg-blue-50 rounded-lg p-4 flex flex-col items-center">
+       <i class="fas fa-heartbeat text-red-500 text-3xl mb-2">
+       </i>
+       <p class="text-gray-700 font-semibold">
+        Heart Rate
+       </p>
+       <p class="text-2xl font-bold text-gray-900">
+        72 bpm
+       </p>
+       <p class="text-sm text-gray-500">
+        Normal
+       </p>
+      </div>
+      <div class="bg-green-50 rounded-lg p-4 flex flex-col items-center">
+       <i class="fas fa-lungs text-green-600 text-3xl mb-2">
+       </i>
+       <p class="text-gray-700 font-semibold">
+        Respiratory Rate
+       </p>
+       <p class="text-2xl font-bold text-gray-900">
+        16 breaths/min
+       </p>
+       <p class="text-sm text-gray-500">
+        Normal
+       </p>
+      </div>
+      <div class="bg-yellow-50 rounded-lg p-4 flex flex-col items-center">
+       <i class="fas fa-temperature-high text-yellow-600 text-3xl mb-2">
+       </i>
+       <p class="text-gray-700 font-semibold">
+        Body Temperature
+       </p>
+       <p class="text-2xl font-bold text-gray-900">
+        98.6 °F
+       </p>
+       <p class="text-sm text-gray-500">
+        Normal
+       </p>
+      </div>
+      <div class="bg-purple-50 rounded-lg p-4 flex flex-col items-center">
+       <i class="fas fa-tint text-purple-600 text-3xl mb-2">
+       </i>
+       <p class="text-gray-700 font-semibold">
+        Blood Oxygen
+       </p>
+       <p class="text-2xl font-bold text-gray-900">
+        98%
+       </p>
+       <p class="text-sm text-gray-500">
+        Normal
+       </p>
+      </div>
+      <div class="bg-red-50 rounded-lg p-4 flex flex-col items-center">
+       <i class="fas fa-procedures text-red-600 text-3xl mb-2">
+       </i>
+       <p class="text-gray-700 font-semibold">
+        Blood Pressure
+       </p>
+       <p class="text-2xl font-bold text-gray-900">
+        120/80 mmHg
+       </p>
+       <p class="text-sm text-gray-500">
+        Normal
+       </p>
+      </div>
+      <div class="bg-indigo-50 rounded-lg p-4 flex flex-col items-center">
+       <i class="fas fa-weight text-indigo-600 text-3xl mb-2">
+       </i>
+       <p class="text-gray-700 font-semibold">
+        Weight
+       </p>
+       <p class="text-2xl font-bold text-gray-900">
+        150 lbs
+       </p>
+       <p class="text-sm text-gray-500">
+        Stable
+       </p>
+      </div>
+     </div>
+    </section>
+   </div>
+   <div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Medications Panel -->
+    <section aria-labelledby="medications-title" class="bg-white rounded-lg shadow p-6 lg:col-span-1">
+     <h2 class="text-lg font-semibold text-gray-900 mb-4" id="medications-title">
+      Current Medications
+     </h2>
+     <ul class="divide-y divide-gray-200 max-h-96 overflow-y-auto">
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Lisinopril
+        </p>
+        <p class="text-sm text-gray-600">
+         10 mg, once daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Metformin
+        </p>
+        <p class="text-sm text-gray-600">
+         500 mg, twice daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Atorvastatin
+        </p>
+        <p class="text-sm text-gray-600">
+         20 mg, once daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Aspirin
+        </p>
+        <p class="text-sm text-gray-600">
+         81 mg, once daily
+        </p>
+       </div>
+       <span class="text-yellow-600 font-semibold">
+        Review
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Albuterol Inhaler
+        </p>
+        <p class="text-sm text-gray-600">
+         2 puffs as needed
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Levothyroxine
+        </p>
+        <p class="text-sm text-gray-600">
+         75 mcg, once daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Omeprazole
+        </p>
+        <p class="text-sm text-gray-600">
+         20 mg, once daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Warfarin
+        </p>
+        <p class="text-sm text-gray-600">
+         5 mg, once daily
+        </p>
+       </div>
+       <span class="text-red-600 font-semibold">
+        Discontinued
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Hydrochlorothiazide
+        </p>
+        <p class="text-sm text-gray-600">
+         25 mg, once daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+      <li class="py-3 flex justify-between items-center">
+       <div>
+        <p class="font-semibold text-gray-900">
+         Gabapentin
+        </p>
+        <p class="text-sm text-gray-600">
+         300 mg, three times daily
+        </p>
+       </div>
+       <span class="text-green-600 font-semibold">
+        Active
+       </span>
+      </li>
+     </ul>
+    </section>
+    <!-- Recent Lab Results Panel -->
+    <section aria-labelledby="lab-results-title" class="bg-white rounded-lg shadow p-6 lg:col-span-2">
+     <h2 class="text-lg font-semibold text-gray-900 mb-4" id="lab-results-title">
+      Recent Lab Results
+     </h2>
+     <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+       <thead class="bg-gray-100">
+        <tr>
+         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
+          Test
+         </th>
+         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
+          Result
+         </th>
+         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
+          Reference Range
+         </th>
+         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
+          Date
+         </th>
+         <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" scope="col">
+          Status
+         </th>
+        </tr>
+       </thead>
+       <tbody class="bg-white divide-y divide-gray-200">
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Complete Blood Count (CBC)
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          Normal
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          See report
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Lipid Panel
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          Borderline
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          See report
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-yellow-100 text-yellow-800">
+           Borderline
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          HbA1c
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          6.2%
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          4.0 - 5.6%
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-yellow-100 text-yellow-800">
+           Elevated
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Thyroid Stimulating Hormone (TSH)
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2.5 mIU/L
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          0.4 - 4.0
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Vitamin D
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          30 ng/mL
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          20 - 50
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Kidney Function Panel
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          Normal
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          See report
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Liver Function Panel
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          Normal
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          See report
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          C-Reactive Protein (CRP)
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          3.0 mg/L
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          0 - 5 mg/L
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-900 font-semibold">
+          Electrolytes Panel
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          Normal
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-500">
+          See report
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap text-gray-700">
+          2024-05-18
+         </td>
+         <td class="px-4 py-3 whitespace-nowrap">
+          <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full bg-green-100 text-green-800">
+           Normal
+          </span>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </section>
+   </div>
+   <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Upcoming Appointments Panel -->
+    <section aria-labelledby="appointments-title" class="bg-white rounded-lg shadow p-6">
+     <h2 class="text-lg font-semibold text-gray-900 mb-4" id="appointments-title">
+      Upcoming Appointments
+     </h2>
+     <ul class="divide-y divide-gray-200 max-h-80 overflow-y-auto">
+      <li class="py-4 flex items-center justify-between">
+       <div>
+        <p class="font-semibold text-gray-900">
+         2024-06-01 09:00 AM
+        </p>
+        <p class="text-gray-600">
+         General Checkup with Dr. Jane Doe
+        </p>
+        <p class="text-gray-500 text-sm">
+         Room 101
+        </p>
+       </div>
+       <button aria-label="View appointment details" class="text-blue-600 hover:text-blue-800 font-semibold focus:outline-none">
+        <i class="fas fa-info-circle fa-lg">
+        </i>
+       </button>
+      </li>
+      <li class="py-4 flex items-center justify-between">
+       <div>
+        <p class="font-semibold text-gray-900">
+         2024-06-15 02:30 PM
+        </p>
+        <p class="text-gray-600">
+         Cardiology Consultation with Dr. Smith
+        </p>
+        <p class="text-gray-500 text-sm">
+         Room 305
+        </p>
+       </div>
+       <button aria-label="View appointment details" class="text-blue-600 hover:text-blue-800 font-semibold focus:outline-none">
+        <i class="fas fa-info-circle fa-lg">
+        </i>
+       </button>
+      </li>
+      <li class="py-4 flex items-center justify-between">
+       <div>
+        <p class="font-semibold text-gray-900">
+         2024-07-05 11:00 AM
+        </p>
+        <p class="text-gray-600">
+         Lab Tests - Blood Work
+        </p>
+        <p class="text-gray-500 text-sm">
+         Lab 2
+        </p>
+       </div>
+       <button aria-label="View appointment details" class="text-blue-600 hover:text-blue-800 font-semibold focus:outline-none">
+        <i class="fas fa-info-circle fa-lg">
+        </i>
+       </button>
+      </li>
+      <li class="py-4 flex items-center justify-between">
+       <div>
+        <p class="font-semibold text-gray-900">
+         2024-07-20 10:00 AM
+        </p>
+        <p class="text-gray-600">
+         Physical Therapy Session
+        </p>
+        <p class="text-gray-500 text-sm">
+         Therapy Room 1
+        </p>
+       </div>
+       <button aria-label="View appointment details" class="text-blue-600 hover:text-blue-800 font-semibold focus:outline-none">
+        <i class="fas fa-info-circle fa-lg">
+        </i>
+       </button>
+      </li>
+      <li class="py-4 flex items-center justify-between">
+       <div>
+        <p class="font-semibold text-gray-900">
+         2024-08-01 01:00 PM
+        </p>
+        <p class="text-gray-600">
+         Nutritionist Consultation
+        </p>
+        <p class="text-gray-500 text-sm">
+         Room 210
+        </p>
+       </div>
+       <button aria-label="View appointment details" class="text-blue-600 hover:text-blue-800 font-semibold focus:outline-none">
+        <i class="fas fa-info-circle fa-lg">
+        </i>
+       </button>
+      </li>
+     </ul>
+    </section>
+    <!-- Notes & Alerts Panel -->
+    <section aria-labelledby="notes-alerts-title" class="bg-white rounded-lg shadow p-6">
+     <h2 class="text-lg font-semibold text-gray-900 mb-4" id="notes-alerts-title">
+      Notes &amp; Alerts
+     </h2>
+     <ul class="space-y-4 max-h-80 overflow-y-auto">
+      <li class="border-l-4 border-red-600 bg-red-50 p-3 rounded">
+       <p class="font-semibold text-red-800">
+        Allergy Alert
+       </p>
+       <p class="text-red-700 text-sm">
+        Patient is allergic to Penicillin. Avoid prescribing any
+              penicillin-based antibiotics.
+       </p>
+       <p class="text-xs text-red-600 mt-1">
+        2024-05-20
+       </p>
+      </li>
+      <li class="border-l-4 border-yellow-500 bg-yellow-50 p-3 rounded">
+       <p class="font-semibold text-yellow-800">
+        Medication Review
+       </p>
+       <p class="text-yellow-700 text-sm">
+        Aspirin dosage needs review due to recent bleeding episode.
+       </p>
+       <p class="text-xs text-yellow-600 mt-1">
+        2024-05-15
+       </p>
+      </li>
+      <li class="border-l-4 border-blue-600 bg-blue-50 p-3 rounded">
+       <p class="font-semibold text-blue-800">
+        Note
+       </p>
+       <p class="text-blue-700 text-sm">
+        Patient reported mild shortness of breath during last visit.
+       </p>
+       <p class="text-xs text-blue-600 mt-1">
+        2024-05-18
+       </p>
+      </li>
+      <li class="border-l-4 border-green-600 bg-green-50 p-3 rounded">
+       <p class="font-semibold text-green-800">
+        Follow-up
+       </p>
+       <p class="text-green-700 text-sm">
+        Schedule follow-up for blood pressure monitoring in 2 weeks.
+       </p>
+       <p class="text-xs text-green-600 mt-1">
+        2024-05-19
+       </p>
+      </li>
+      <li class="border-l-4 border-red-600 bg-red-50 p-3 rounded">
+       <p class="font-semibold text-red-800">
+        Urgent Alert
+       </p>
+       <p class="text-red-700 text-sm">
+        Elevated HbA1c levels indicate need for diabetes management plan.
+       </p>
+       <p class="text-xs text-red-600 mt-1">
+        2024-05-20
+       </p>
+      </li>
+     </ul>
+    </section>
+   </div>
+  </main>
+  <footer class="bg-white border-t border-gray-200 py-4 mt-auto">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+    © 2024 Clinician Dashboard. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+ </body>
+</html>
